@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProductDetailFragment" >
+
+    <TextView
+        android:id="@+id/lblName"
+        android:layout_width="197dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="84dp"
+        android:fontFamily="@font/shojumaru"
+        android:text="Nombre producto:"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/balthazar"
+        android:text="Nombre"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/lblName"
+        app:layout_constraintTop_toTopOf="@+id/lblName" />
+
+    <TextView
+        android:id="@+id/lblDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/shojumaru"
+        android:text="Descripción:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/lblName"
+        app:layout_constraintTop_toBottomOf="@+id/lblName" />
+
+    <TextView
+        android:id="@+id/tvDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:fontFamily="@font/balthazar"
+        android:text="Descripción"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvName"
+        app:layout_constraintTop_toTopOf="@+id/lblDesc" />
+
+    <TextView
+        android:id="@+id/lblCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/shojumaru"
+        android:text="Categoría:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/lblDesc"
+        app:layout_constraintTop_toBottomOf="@+id/lblDesc" />
+
+    <TextView
+        android:id="@+id/tvCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/balthazar"
+        android:text="Categoría"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvDesc"
+        app:layout_constraintTop_toTopOf="@+id/lblCategory" />
+
+    <TextView
+        android:id="@+id/lblPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/shojumaru"
+        android:text="Precio:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/lblCategory"
+        app:layout_constraintTop_toBottomOf="@+id/lblCategory" />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/balthazar"
+        android:text="Precio"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvCategory"
+        app:layout_constraintTop_toTopOf="@+id/lblPrice" />
+</androidx.constraintlayout.widget.ConstraintLayout>
