@@ -1,23 +1,98 @@
 package com.canitopai.proyectointegrador
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import com.canitopai.proyectointegrador.databinding.FragmentProductListBinding
+import com.canitopai.proyectointegrador.model.ProductObject
+import com.canitopai.proyectointegrador.model.ProductObjectItem
+import com.canitopai.proyectointegrador.network.GetProduct
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
+// TODO: Rename parameter arguments, choose names that match
 
 class ProductListFragment : Fragment() {
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    private var _binding: FragmentProductListBinding? = null
+    private val binding
+        get() = _binding!!
+    private val adapter = ProductAdapter {
+
+        // var myDate: String = it.dob.date.substring(0, 10)
+        //var myAgeShow: Int = it.dob.age
+        //var myAge: String = myAgeShow.toString()
+
+        val action = ProductListFragmentDirections.actionProductListFragmentToProductDetailFragment(it.name,it.category,it.description,it.price)
+        findNavController().navigate(action)
+        //val action = PokemonListFragmentDirections.actionPokemonListToPokemonDetailFragment(it.name,it.types.type.name[0],it.height,it.weight,it.id
+        //)
+
     }
+
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_product_list, container, false)
+        _binding = FragmentProductListBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.rvProduct.layoutManager = GridLayoutManager(context, 2)
+        binding.rvProduct.adapter = adapter
+
+        requestData()
+    }
+
+
+    private fun requestData() {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://localhost:44319/api/todoitems/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        val service: GetProduct = retrofit.create(GetProduct::class.java)
+
+        service.getProducts().enqueue(object : Callback<ProductObject> {
+
+
+            override fun onFailure(call: Call<ProductObject>, t: Throwable) {
+                Toast.makeText(context, "Algo no ha funcionado como esperábamos", Toast.LENGTH_SHORT).show()
+                Log.e("Retrofit", "Error: ${t.localizedMessage}", t)
+            }
+
+            override fun onResponse(
+                call: Call<ProductObject>,
+                response: Response<ProductObject>
+            ) {
+                if (response.isSuccessful){
+                    adapter.submitList(response.body()?.results)
+                    Log.e("Retrofit","Salió bien")
+                } else {
+                    Toast.makeText(context, "400", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+        })
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

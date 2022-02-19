@@ -18,5 +18,19 @@
         android:id="@+id/productDetailFragment"
         android:name="com.canitopai.proyectointegrador.ProductDetailFragment"
         android:label="fragment_product_detail"
-        tools:layout="@layout/fragment_product_detail" />
+        tools:layout="@layout/fragment_product_detail" >
+        <argument
+            android:name="name"
+            app:argType="string"
+            android:defaultValue="Nombre" />
+        <argument
+            android:name="desc"
+            app:argType="string" />
+        <argument
+            android:name="category"
+            app:argType="string" />
+        <argument
+            android:name="price"
+            app:argType="integer" />
+    </fragment>
 </navigation>

@@ -9,15 +9,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.canitopai.proyectointegrador.databinding.ProductItemBinding
-import com.canitopai.proyectointegrador.model.Product
-import com.canitopai.proyectointegrador.model.ProductInfo
-import com.canitopai.proyectointegrador.model.ProductList
+import com.canitopai.proyectointegrador.model.ProductObjectItem
 
 interface onProductListener {
-    fun onClick(prod: Product)
+    fun onClick(prod: ProductObjectItem)
 }
 
-class ProductAdapter(private val onUserClicked: (ProductList) -> Unit): ListAdapter<ProductList, ProductAdapter.ViewHolder>(ProductItemCallback()) {
+class ProductAdapter(private val onProductClicked: (ProductObjectItem) -> Unit): ListAdapter<ProductObjectItem, ProductAdapter.ViewHolder>(ProductItemCallback()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -30,8 +28,8 @@ class ProductAdapter(private val onUserClicked: (ProductList) -> Unit): ListAdap
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val prod = getItem(position)
 
-        holder.binding.tvItemName = prod.name
-        holder.binding.tvItemPrice = prod.price
+        holder.binding.tvItemName.text = prod.name
+        holder.binding.tvItemPrice.text = prod.price.toString()
 
         holder.binding.root.setOnClickListener {
             onProductClicked(prod)
@@ -43,10 +41,10 @@ class ProductAdapter(private val onUserClicked: (ProductList) -> Unit): ListAdap
 
 }
 
-class UserItemCallback: DiffUtil.ItemCallback<ProductList>(){
-    override fun areItemsTheSame(oldItem: ProductList, newItem: ProductList): Boolean = oldItem.url == newItem.url
+class ProductItemCallback: DiffUtil.ItemCallback<ProductObjectItem>(){
+    override fun areItemsTheSame(oldItem: ProductObjectItem, newItem: ProductObjectItem): Boolean = oldItem.id == newItem.id
 
-    override fun areContentsTheSame(oldItem: ProductList, newItem: ProductList): Boolean = oldItem.url == newItem.url
+    override fun areContentsTheSame(oldItem: ProductObjectItem, newItem: ProductObjectItem): Boolean = oldItem.id == newItem.id
 
 }
 
