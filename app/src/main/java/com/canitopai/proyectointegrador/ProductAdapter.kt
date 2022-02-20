@@ -1,21 +1,16 @@
 package com.canitopai.proyectointegrador
 
 
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import com.canitopai.proyectointegrador.databinding.ProductItemBinding
 import com.canitopai.proyectointegrador.model.ProductObjectItem
 
-interface onProductListener {
-    fun onClick(prod: ProductObjectItem)
-}
-
-class ProductAdapter(private val onProductClicked: (ProductObjectItem) -> Unit): ListAdapter<ProductObjectItem, ProductAdapter.ViewHolder>(ProductItemCallback()) {
+class ProductAdapter(private val onProductClicked: (ProductObjectItem) -> Unit) :
+    ListAdapter<ProductObjectItem, ProductAdapter.ViewHolder>(ProductItemCallback()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -36,15 +31,19 @@ class ProductAdapter(private val onProductClicked: (ProductObjectItem) -> Unit):
         }
     }
 
-    inner class ViewHolder(val binding: ProductItemBinding): RecyclerView.ViewHolder(binding.root)
+    inner class ViewHolder(val binding: ProductItemBinding) : RecyclerView.ViewHolder(binding.root)
 
 
 }
 
-class ProductItemCallback: DiffUtil.ItemCallback<ProductObjectItem>(){
-    override fun areItemsTheSame(oldItem: ProductObjectItem, newItem: ProductObjectItem): Boolean = oldItem.id == newItem.id
+class ProductItemCallback : DiffUtil.ItemCallback<ProductObjectItem>() {
+    override fun areItemsTheSame(oldItem: ProductObjectItem, newItem: ProductObjectItem): Boolean =
+        oldItem.id == newItem.id
 
-    override fun areContentsTheSame(oldItem: ProductObjectItem, newItem: ProductObjectItem): Boolean = oldItem.id == newItem.id
+    override fun areContentsTheSame(
+        oldItem: ProductObjectItem,
+        newItem: ProductObjectItem
+    ): Boolean = oldItem.id == newItem.id
 
 }
 

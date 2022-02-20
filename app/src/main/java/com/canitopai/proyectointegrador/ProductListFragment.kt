@@ -10,9 +10,8 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.canitopai.proyectointegrador.databinding.FragmentProductListBinding
-import com.canitopai.proyectointegrador.model.ProductObject
 import com.canitopai.proyectointegrador.model.ProductObjectItem
-import com.canitopai.proyectointegrador.network.GetProduct
+import com.canitopai.proyectointegrador.network.ProductEndpoints
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,6 +24,12 @@ class ProductListFragment : Fragment() {
 
 
     private var _binding: FragmentProductListBinding? = null
+
+    private val retrofit = Retrofit.Builder()
+        .baseUrl("http://10.0.2.2:5000/api/todoitems/")
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
     private val binding
         get() = _binding!!
     private val adapter = ProductAdapter {
@@ -52,35 +57,34 @@ class ProductListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         binding.rvProduct.layoutManager = GridLayoutManager(context, 2)
         binding.rvProduct.adapter = adapter
-
+        binding.btnAdd.setOnClickListener {
+            Toast.makeText(it.context, "hjoa", Toast.LENGTH_SHORT).show()
+        }
         requestData()
     }
 
 
     private fun requestData() {
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://localhost:44319/api/todoitems/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
 
-        val service: GetProduct = retrofit.create(GetProduct::class.java)
+        val service: ProductEndpoints = retrofit.create(ProductEndpoints::class.java)
 
-        service.getProducts().enqueue(object : Callback<ProductObject> {
+        service.getProducts().enqueue(object : Callback<List<ProductObjectItem>> {
 
 
-            override fun onFailure(call: Call<ProductObject>, t: Throwable) {
+            override fun onFailure(call: Call<List<ProductObjectItem>>, t: Throwable) {
                 Toast.makeText(context, "Algo no ha funcionado como esperábamos", Toast.LENGTH_SHORT).show()
                 Log.e("Retrofit", "Error: ${t.localizedMessage}", t)
             }
 
             override fun onResponse(
-                call: Call<ProductObject>,
-                response: Response<ProductObject>
+                call: Call<List<ProductObjectItem>>,
+                response: Response<List<ProductObjectItem>>
             ) {
                 if (response.isSuccessful){
-                    adapter.submitList(response.body()?.results)
+                    adapter.submitList(response.body())
                     Log.e("Retrofit","Salió bien")
                 } else {
                     Toast.makeText(context, "400", Toast.LENGTH_SHORT).show()

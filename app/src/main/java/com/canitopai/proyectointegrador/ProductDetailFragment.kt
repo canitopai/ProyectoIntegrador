@@ -1,25 +1,20 @@
-package com.canitopai.pokemonnetwork
+package com.canitopai.proyectointegrador
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.navigation.fragment.navArgs
+import androidx.fragment.app.Fragment
 import com.canitopai.proyectointegrador.databinding.FragmentProductDetailBinding
 import com.canitopai.proyectointegrador.model.ProductObjectItem
-import com.canitopai.proyectointegrador.network.GetProduct
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_product_detail.*
+import com.canitopai.proyectointegrador.network.ProductEndpoints
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import kotlin.reflect.KProperty
-
 
 
 class ProductDetailFragment : Fragment() {
@@ -27,7 +22,6 @@ class ProductDetailFragment : Fragment() {
     private val binding
         get() = _binding!!
 
-    private val args: FragmentProductDetailBinding by navArgs()
     private var name: String = "Nombre"
     private var desc: String? = null
     private var category: String? = null
@@ -73,19 +67,26 @@ class ProductDetailFragment : Fragment() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
-        val service: GetProduct = retrofit.create(GetProduct::class.java)
+        val service: ProductEndpoints = retrofit.create(ProductEndpoints::class.java)
 
         service.getProductDetailed(id)?.enqueue(object : Callback<ProductObjectItem?> {
 
 
             override fun onFailure(call: Call<ProductObjectItem?>, t: Throwable) {
-                Toast.makeText(context, "Algo no ha funcionado como esperábamos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    context,
+                    "Algo no ha funcionado como esperábamos",
+                    Toast.LENGTH_SHORT
+                ).show()
                 Log.e("Retrofit", "Error: ${t.localizedMessage}", t)
             }
 
-            override fun onResponse(call: Call<ProductObjectItem?>, response: Response<ProductObjectItem?>) {
-                if (response.isSuccessful){
-                    Log.e("Retrofit","Salió bien")
+            override fun onResponse(
+                call: Call<ProductObjectItem?>,
+                response: Response<ProductObjectItem?>
+            ) {
+                if (response.isSuccessful) {
+                    Log.e("Retrofit", "Salió bien")
                 } else {
                     Toast.makeText(context, "400", Toast.LENGTH_SHORT).show()
                 }
@@ -93,6 +94,7 @@ class ProductDetailFragment : Fragment() {
 
         })
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

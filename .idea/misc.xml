@@ -3,6 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Brenno/AndroidStudioProjects/ProyectoIntegrador/app/src/main/res/layout/activity_main.xml" value="0.2726449275362319" />
+        <entry key="..\:/Users/Brenno/AndroidStudioProjects/ProyectoIntegrador/app/src/main/res/layout/fragment_product_add.xml" value="0.2726449275362319" />
+        <entry key="..\:/Users/Brenno/AndroidStudioProjects/ProyectoIntegrador/app/src/main/res/layout/fragment_product_detail.xml" value="0.2726449275362319" />
+        <entry key="..\:/Users/Brenno/AndroidStudioProjects/ProyectoIntegrador/app/src/main/res/layout/fragment_product_list.xml" value="0.2726449275362319" />
+        <entry key="..\:/Users/Brenno/AndroidStudioProjects/ProyectoIntegrador/app/src/main/res/layout/product_item.xml" value="0.2726449275362319" />
+        <entry key="..\:/Users/Brenno/AndroidStudioProjects/ProyectoIntegrador/app/src/main/res/xml/network_security_config.xml" value="0.1" />
         <entry key="..\:/Users/jorge/AndroidStudioProjects/ProyectoIntegrador/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/jorge/AndroidStudioProjects/ProyectoIntegrador/app/src/main/res/layout/fragment_product_detail.xml" value="0.1793478260869565" />
         <entry key="..\:/Users/jorge/AndroidStudioProjects/ProyectoIntegrador/app/src/main/res/layout/fragment_product_list.xml" value="0.1793478260869565" />
