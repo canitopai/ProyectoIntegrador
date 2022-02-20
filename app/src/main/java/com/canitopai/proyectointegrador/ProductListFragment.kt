@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.canitopai.proyectointegrador.databinding.FragmentProductListBinding
 import com.canitopai.proyectointegrador.model.ProductObjectItem
+import com.canitopai.proyectointegrador.model.ProductObjectRequest
 import com.canitopai.proyectointegrador.network.ProductEndpoints
 import retrofit2.Call
 import retrofit2.Callback
@@ -71,6 +72,36 @@ class ProductListFragment : Fragment() {
         binding.rvProduct.adapter = adapter
         binding.btnAdd.setOnClickListener {
             Toast.makeText(it.context, "hjoa", Toast.LENGTH_SHORT).show()
+
+            val service: ProductEndpoints = retrofit.create(ProductEndpoints::class.java)
+
+            service.savePost(ProductObjectRequest(0, "name","desc", 1, "cats")).enqueue(
+                object : Callback<ProductObjectItem> {
+
+
+                    override fun onFailure(call: Call<ProductObjectItem>, t: Throwable) {
+                        Toast.makeText(
+                            context,
+                            "Algo no ha funcionado como esperábamos",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        Log.e("Retrofit", "Error: ${t.localizedMessage}", t)
+                    }
+
+                    override fun onResponse(
+                        call: Call<ProductObjectItem>,
+                        response: Response<ProductObjectItem>
+                    ) {
+                        if (response.isSuccessful) {
+                            adapter.submitList(listOf(response.body()))
+                            Log.e("Retrofit", "Salió bien")
+                        } else {
+                            Toast.makeText(context, "400", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+
+                }
+            )
         }
         requestData()
     }
@@ -84,7 +115,11 @@ class ProductListFragment : Fragment() {
 
 
             override fun onFailure(call: Call<List<ProductObjectItem>>, t: Throwable) {
-                Toast.makeText(context, "Algo no ha funcionado como esperábamos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    context,
+                    "Algo no ha funcionado como esperábamos",
+                    Toast.LENGTH_SHORT
+                ).show()
                 Log.e("Retrofit", "Error: ${t.localizedMessage}", t)
             }
 
@@ -92,9 +127,9 @@ class ProductListFragment : Fragment() {
                 call: Call<List<ProductObjectItem>>,
                 response: Response<List<ProductObjectItem>>
             ) {
-                if (response.isSuccessful){
+                    if (response.isSuccessful) {
                     adapter.submitList(response.body())
-                    Log.e("Retrofit","Salió bien")
+                    Log.e("Retrofit", "Salió bien")
                 } else {
                     Toast.makeText(context, "400", Toast.LENGTH_SHORT).show()
                 }
