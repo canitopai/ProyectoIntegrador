@@ -1,12 +1,12 @@
 package com.canitopai.proyectointegrador.network
 
-import com.canitopai.proyectointegrador.model.ProductObject
 import com.canitopai.proyectointegrador.model.ProductObjectItem
+import com.canitopai.proyectointegrador.model.ProductObjectRequest
 import retrofit2.Call
-import retrofit2.http.Field
+import retrofit2.Response
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
-import retrofit2.http.Url
 
 interface ProductEndpoints {
     @GET("?offset=0&limit=200")
@@ -15,11 +15,7 @@ interface ProductEndpoints {
     @GET
     fun getProductDetailed(id: Int): Call<ProductObjectItem?>?
 
-    @POST
-    fun savePost(
-        @Field("Name") title: String,
-        @Field("Author") body: String,
-        @Field("userId") userId: Long
-    ): Call<ProductObjectItem>
+    @POST("/api/todoitems/")
+    fun savePost(@Body body: ProductObjectRequest): Call<ProductObjectItem>
 
 }
