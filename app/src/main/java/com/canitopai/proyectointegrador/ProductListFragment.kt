@@ -26,7 +26,7 @@ class ProductListFragment : Fragment() {
     private var _binding: FragmentProductListBinding? = null
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://10.0.2.2:5000/api/todoitems/")
+        .baseUrl("http://192.168.56.1:3000/api/todoitems/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
@@ -38,7 +38,12 @@ class ProductListFragment : Fragment() {
         //var myAgeShow: Int = it.dob.age
         //var myAge: String = myAgeShow.toString()
 
-        val action = ProductListFragmentDirections.actionProductListFragmentToProductDetailFragment(it.name,it.category,it.description,it.price)
+        val action = ProductListFragmentDirections.actionProductListFragmentToProductDetailFragment(
+            it.name,
+            it.category,
+            it.description,
+            it.price
+        )
         findNavController().navigate(action)
         //val action = PokemonListFragmentDirections.actionPokemonListToPokemonDetailFragment(it.name,it.types.type.name[0],it.height,it.weight,it.id
         //)
@@ -52,7 +57,11 @@ class ProductListFragment : Fragment() {
     ): View? {
         _binding = FragmentProductListBinding.inflate(inflater, container, false)
         return binding.root
+        binding.btnAdd.setOnClickListener{
+            //ir al AddProduct
+        }
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
