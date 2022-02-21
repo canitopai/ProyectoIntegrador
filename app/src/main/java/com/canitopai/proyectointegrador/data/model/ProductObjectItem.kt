@@ -1,4 +1,4 @@
-package com.canitopai.proyectointegrador.ui.view
+package com.canitopai.proyectointegrador.data.model
 
 
 import com.google.gson.annotations.SerializedName

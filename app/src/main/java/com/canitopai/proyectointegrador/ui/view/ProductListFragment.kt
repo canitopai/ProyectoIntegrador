@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import com.canitopai.proyectointegrador.data.model.ProductObjectItem
 import com.canitopai.proyectointegrador.databinding.FragmentProductListBinding
 import com.canitopai.proyectointegrador.network.NetworkManager
 import retrofit2.Call

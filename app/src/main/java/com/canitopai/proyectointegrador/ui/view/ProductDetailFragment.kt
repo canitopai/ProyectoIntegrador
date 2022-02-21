@@ -7,19 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
+import com.canitopai.proyectointegrador.data.model.ProductObjectItem
 import com.canitopai.proyectointegrador.databinding.FragmentProductDetailBinding
-import com.canitopai.proyectointegrador.network.ProductEndpoints
+import com.canitopai.proyectointegrador.network.NetworkManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 
 class ProductDetailFragment : Fragment() {
     private var _binding: FragmentProductDetailBinding? = null
     private val binding
         get() = _binding!!
+    private val args: ProductDetailFragmentArgs by navArgs()
 
     private var name: String = "Nombre"
     private var desc: String? = null
@@ -40,14 +41,6 @@ class ProductDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         requestData()
-        binding.tvName.text = name
-        binding.tvCategory.text = category
-        binding.tvDesc.text = desc
-        binding.tvPrice.text = price.toString()
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
         arguments?.let {
 
             name = it.getString(name).toString()
@@ -56,16 +49,20 @@ class ProductDetailFragment : Fragment() {
             price = it.getInt(price.toString())
 
         }
+        binding.tvName.text = args.name
+        binding.tvCategory.text = args.desc
+        binding.tvDesc.text = args.category
+        binding.tvPrice.text = args.price.toString()
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
     }
 
     private fun requestData() {
-        val retrofit = Retrofit.Builder().baseUrl("http://192.168.56.1:3000/api/todoitems/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
 
-        val service: ProductEndpoints = retrofit.create(ProductEndpoints::class.java)
 
-        service.getProductDetailed(myId)?.enqueue(object : Callback<ProductObjectItem?> {
+        NetworkManager.service.getProductDetailed(args.myId)?.enqueue(object : Callback<ProductObjectItem?> {
 
 
             override fun onFailure(call: Call<ProductObjectItem?>, t: Throwable) {

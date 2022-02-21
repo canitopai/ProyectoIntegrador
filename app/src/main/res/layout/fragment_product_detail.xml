@@ -5,7 +5,8 @@
     android:id="@+id/frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.ProductDetailFragment" >
+    android:backgroundTint="#E91E63"
+    tools:context=".ui.view.ProductDetailFragment">
 
     <TextView
         android:id="@+id/lblName"
@@ -37,7 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/shojumaru"
         android:text="Descripción:"
         android:textSize="20sp"
@@ -49,22 +50,24 @@
         android:id="@+id/tvDesc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="52dp"
         android:fontFamily="@font/balthazar"
         android:text="Descripción"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/tvName"
+        app:layout_constraintStart_toStartOf="@+id/lblDesc"
         app:layout_constraintTop_toTopOf="@+id/lblDesc" />
 
     <TextView
         android:id="@+id/lblCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="92dp"
+        android:layout_marginEnd="156dp"
         android:fontFamily="@font/shojumaru"
         android:text="Categoría:"
         android:textSize="20sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvName"
         app:layout_constraintStart_toStartOf="@+id/lblDesc"
         app:layout_constraintTop_toBottomOf="@+id/lblDesc" />
 
@@ -72,10 +75,11 @@
         android:id="@+id/tvCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
         android:fontFamily="@font/balthazar"
         android:text="Categoría"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/tvDesc"
+        app:layout_constraintEnd_toEndOf="@+id/tvName"
         app:layout_constraintTop_toTopOf="@+id/lblCategory" />
 
     <TextView
@@ -94,9 +98,34 @@
         android:id="@+id/tvPrice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="70dp"
         android:fontFamily="@font/balthazar"
         android:text="Precio"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/tvCategory"
         app:layout_constraintTop_toTopOf="@+id/lblPrice" />
+
+    <TextView
+        android:id="@+id/lblCurrency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="2dp"
+        android:fontFamily="@font/balthazar"
+        android:text="€"
+        android:textSize="18dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/tvPrice"
+        app:layout_constraintTop_toTopOf="@+id/tvPrice" />
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="143dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="116dp"
+        android:backgroundTint="#E91E63"
+        android:text="Borrar"
+        app:cornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblPrice" />
 </androidx.constraintlayout.widget.ConstraintLayout>
