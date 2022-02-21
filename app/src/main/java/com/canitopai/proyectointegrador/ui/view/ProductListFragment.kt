@@ -1,4 +1,4 @@
-package com.canitopai.proyectointegrador
+package com.canitopai.proyectointegrador.ui.view
 
 import android.os.Bundle
 import android.util.Log
@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.canitopai.proyectointegrador.databinding.FragmentProductListBinding
-import com.canitopai.proyectointegrador.data.model.ProductObjectItem
 import com.canitopai.proyectointegrador.network.NetworkManager
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,9 +32,6 @@ class ProductListFragment : Fragment() {
         get() = _binding!!
     private val adapter = ProductAdapter {
 
-        // var myDate: String = it.dob.date.substring(0, 10)
-        //var myAgeShow: Int = it.dob.age
-        //var myAge: String = myAgeShow.toString()
 
         val action = ProductListFragmentDirections.actionProductListFragmentToProductDetailFragment(
             it.name,
@@ -45,8 +41,6 @@ class ProductListFragment : Fragment() {
             it.id
         )
         findNavController().navigate(action)
-        //val action = PokemonListFragmentDirections.actionPokemonListToPokemonDetailFragment(it.name,it.types.type.name[0],it.height,it.weight,it.id
-        //)
 
     }
 

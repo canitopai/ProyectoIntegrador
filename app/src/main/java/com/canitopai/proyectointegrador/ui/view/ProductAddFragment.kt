@@ -1,4 +1,4 @@
-package com.canitopai.proyectointegrador
+package com.canitopai.proyectointegrador.ui.view
 
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.canitopai.proyectointegrador.databinding.FragmentProductAddBinding
-import com.canitopai.proyectointegrador.data.model.ProductObjectItem
 import com.canitopai.proyectointegrador.network.NetworkManager
 import com.canitopai.proyectointegrador.network.ProductEndpoints
 import kotlinx.android.synthetic.main.fragment_product_add.*

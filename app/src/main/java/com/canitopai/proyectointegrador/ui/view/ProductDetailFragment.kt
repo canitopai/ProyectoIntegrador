@@ -1,4 +1,4 @@
-package com.canitopai.proyectointegrador
+package com.canitopai.proyectointegrador.ui.view
 
 import android.os.Bundle
 import android.util.Log
@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.canitopai.proyectointegrador.databinding.FragmentProductDetailBinding
-import com.canitopai.proyectointegrador.data.model.ProductObjectItem
 import com.canitopai.proyectointegrador.network.ProductEndpoints
 import retrofit2.Call
 import retrofit2.Callback
@@ -55,11 +54,7 @@ class ProductDetailFragment : Fragment() {
             desc = it.getString(desc).toString()
             category = it.getString(category).toString()
             price = it.getInt(price.toString())
-            // type = it.getString("type")
-            //height = it.getFloat("height")
-            //weight = it.getFloat("weight")
-            //mid = it.getInt("id")
-            //sprite = it.getString("picture")
+
         }
     }
 

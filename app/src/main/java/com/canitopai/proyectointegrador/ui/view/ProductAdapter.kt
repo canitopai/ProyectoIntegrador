@@ -1,4 +1,4 @@
-package com.canitopai.proyectointegrador
+package com.canitopai.proyectointegrador.ui.view
 
 
 import android.view.LayoutInflater
@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.canitopai.proyectointegrador.databinding.ProductItemBinding
-import com.canitopai.proyectointegrador.data.model.ProductObjectItem
 
 class ProductAdapter(private val onProductClicked: (ProductObjectItem) -> Unit) :
     ListAdapter<ProductObjectItem, ProductAdapter.ViewHolder>(ProductItemCallback()) {
