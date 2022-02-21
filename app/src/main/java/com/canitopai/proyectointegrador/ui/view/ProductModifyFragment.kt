@@ -23,11 +23,11 @@ class ProductModifyFragment : Fragment() {
     private val binding
         get() = _binding!!
 
-    private var name: String = "Nombre"
-    private var desc: String? = null
-    private var category: String? = null
-    private var price: Int = 0
-    private var myId: Int = 0
+//    private var name: String = "Nombre"
+//    private var desc: String? = null
+//    private var category: String? = null
+//    private var price: Int = 0
+//    private var myId: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,27 +41,24 @@ class ProductModifyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requestData()
+//        requestData()
         arguments?.let {
 
-            name = it.getString(name).toString()
-            desc = it.getString(desc).toString()
-            category = it.getString(category).toString()
-            price = it.getInt(price.toString())
-
+//            name = it.getString(name).toString()
+//            desc = it.getString(desc).toString()
+//            category = it.getString(category).toString()
+//            price = it.getInt(price.toString())
+//
         }
-        binding.tvName.text = args.name
-        binding.tvCategory.text = args.desc
-        binding.tvDesc.text = args.category
-        binding.tvPrice.text = args.price.toString()
+//        binding.tvName.text = args.name
+//        binding.tvCategory.text = args.desc
+//        binding.tvDesc.text = args.category
+//        binding.tvPrice.text = args.price.toString()
 
         binding.btnCancelar.setOnClickListener {
             //ir a list y pasar por parametro el id que va a borrar
-            val action = ProductAddFragmentDirections.actionProductAddFragmentToProductListFragment(
-                it.id
-            )
+            val action = ProductModifyFragmentDirections.actionProductModifyFragmentToProductDetailFragment()
             findNavController().navigate(action)
-            NetworkManager.service.deletePost(args.myId)
         }
     }
 
@@ -69,34 +66,34 @@ class ProductModifyFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
 
-    private fun requestData() {
-
-
-        NetworkManager.service.getProductDetailed(args.myId)?.enqueue(object : Callback<ProductObjectItem?> {
-
-
-            override fun onFailure(call: Call<ProductObjectItem?>, t: Throwable) {
-                Toast.makeText(
-                    context,
-                    "Algo no ha funcionado como esperábamos",
-                    Toast.LENGTH_SHORT
-                ).show()
-                Log.e("Retrofit", "Error: ${t.localizedMessage}", t)
-            }
-
-            override fun onResponse(
-                call: Call<ProductObjectItem?>,
-                response: Response<ProductObjectItem?>
-            ) {
-                if (response.isSuccessful) {
-                    Log.e("Retrofit", "Salió bien")
-                } else {
-                    Toast.makeText(context, "400", Toast.LENGTH_SHORT).show()
-                }
-            }
-
-        })
-    }
+//    private fun requestData() {
+//
+//
+//        NetworkManager.service.getProductDetailed(args.myId)?.enqueue(object : Callback<ProductObjectItem?> {
+//
+//
+//            override fun onFailure(call: Call<ProductObjectItem?>, t: Throwable) {
+//                Toast.makeText(
+//                    context,
+//                    "Algo no ha funcionado como esperábamos",
+//                    Toast.LENGTH_SHORT
+//                ).show()
+//                Log.e("Retrofit", "Error: ${t.localizedMessage}", t)
+//            }
+//
+//            override fun onResponse(
+//                call: Call<ProductObjectItem?>,
+//                response: Response<ProductObjectItem?>
+//            ) {
+//                if (response.isSuccessful) {
+//                    Log.e("Retrofit", "Salió bien")
+//                } else {
+//                    Toast.makeText(context, "400", Toast.LENGTH_SHORT).show()
+//                }
+//            }
+//
+//        })
+//    }
 
     override fun onDestroyView() {
         super.onDestroyView()
