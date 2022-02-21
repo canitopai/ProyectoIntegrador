@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.canitopai.proyectointegrador.data.model.ProductObjectItem
 import com.canitopai.proyectointegrador.databinding.FragmentProductDetailBinding
@@ -53,6 +54,15 @@ class ProductDetailFragment : Fragment() {
         binding.tvCategory.text = args.desc
         binding.tvDesc.text = args.category
         binding.tvPrice.text = args.price.toString()
+
+        binding.btnDelete.setOnClickListener {
+            //ir a list y pasar por parametro el id que va a borrar
+            val action = ProductAddFragmentDirections.actionProductAddFragmentToProductListFragment(
+                it.id
+            )
+            findNavController().navigate(action)
+            NetworkManager.service.deletePost(args.myId)
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
