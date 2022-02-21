@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="#E91E63"
-    tools:context=".ui.view.ProductDetailFragment">
+    tools:context=".ui.view.ProductModifyFragment">
 
     <TextView
         android:id="@+id/lblName"
@@ -118,28 +118,31 @@
         app:layout_constraintTop_toTopOf="@+id/tvPrice" />
 
     <Button
-        android:id="@+id/btnDelete"
+        android:id="@+id/btnGuardar"
+        android:layout_width="143dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="120dp"
+        android:backgroundTint="#E91E63"
+        android:text="Guardar"
+        app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnCancelar"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lblPrice"
+        app:layout_constraintVertical_bias="0.058" />
+
+    <Button
+        android:id="@+id/btnCancelar"
         android:layout_width="143dp"
         android:layout_height="60dp"
         android:layout_marginTop="136dp"
-        android:backgroundTint="#E91E63"
-        android:text="Borrar"
-        app:cornerRadius="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/btnModify"
-        app:layout_constraintHorizontal_bias="0.657"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblPrice" />
-
-    <Button
-        android:id="@+id/btnModify"
-        android:layout_width="143dp"
-        android:layout_height="60dp"
-        android:layout_marginEnd="52dp"
+        android:layout_marginEnd="64dp"
         android:backgroundTint="#E91E63"
         android:text="Cancelar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvPrice"
-        app:layout_constraintVertical_bias="0.507" />
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

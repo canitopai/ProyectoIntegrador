@@ -41,6 +41,9 @@
         <argument
             android:name="myId"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_productDetailFragment_to_productModifyFragment"
+            app:destination="@id/productModifyFragment" />
     </fragment>
     <fragment
         android:id="@+id/productAddFragment"
@@ -49,6 +52,15 @@
         tools:layout="@layout/fragment_product_add" >
         <action
             android:id="@+id/action_productAddFragment_to_productListFragment"
+            app:destination="@id/productListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/productModifyFragment"
+        android:name="com.canitopai.proyectointegrador.ui.view.ProductModifyFragment"
+        android:label="fragment_product_modify"
+        tools:layout="@layout/fragment_product_modify" >
+        <action
+            android:id="@+id/action_productModifyFragment_to_productListFragment"
             app:destination="@id/productListFragment" />
     </fragment>
 </navigation>

@@ -12,16 +12,16 @@ import androidx.navigation.fragment.navArgs
 import com.canitopai.proyectointegrador.data.model.ProductObjectItem
 import com.canitopai.proyectointegrador.databinding.FragmentProductDetailBinding
 import com.canitopai.proyectointegrador.core.NetworkManager
+import com.canitopai.proyectointegrador.databinding.FragmentProductModifyBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-class ProductDetailFragment : Fragment() {
-    private var _binding: FragmentProductDetailBinding? = null
+class ProductModifyFragment : Fragment() {
+    private var _binding: FragmentProductModifyBinding? = null
     private val binding
         get() = _binding!!
-    private val args: ProductDetailFragmentArgs by navArgs()
 
     private var name: String = "Nombre"
     private var desc: String? = null
@@ -34,7 +34,7 @@ class ProductDetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentProductDetailBinding.inflate(inflater, container, false)
+        _binding = FragmentProductModifyBinding.inflate(inflater, container, false)
 
         return binding.root
     }
@@ -55,7 +55,7 @@ class ProductDetailFragment : Fragment() {
         binding.tvDesc.text = args.category
         binding.tvPrice.text = args.price.toString()
 
-        binding.btnDelete.setOnClickListener {
+        binding.btnCancelar.setOnClickListener {
             //ir a list y pasar por parametro el id que va a borrar
             val action = ProductAddFragmentDirections.actionProductAddFragmentToProductListFragment(
                 it.id
@@ -63,15 +63,6 @@ class ProductDetailFragment : Fragment() {
             findNavController().navigate(action)
             NetworkManager.service.deletePost(args.myId)
         }
-
-        binding.btnModify.setOnClickListener {
-            //ir a modify
-            val action = ProductAddFragmentDirections.actionProductAddFragmentToProductListFragment(
-                it.id
-            )
-            findNavController().navigate(action)
-        }
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
