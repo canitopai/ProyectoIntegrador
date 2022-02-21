@@ -68,6 +68,10 @@ class ProductDetailFragment : Fragment() {
             )
             findNavController().navigate(action)
         }
+        binding.btnBack.setOnClickListener {
+            val action = ProductDetailFragmentDirections.actionProductDetailFragmentToProductListFragment()
+            findNavController().navigate(action)
+        }
 
     }
 
