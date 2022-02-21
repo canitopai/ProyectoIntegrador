@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.canitopai.proyectointegrador.databinding.FragmentProductDetailBinding
-import com.canitopai.proyectointegrador.model.ProductObjectItem
+import com.canitopai.proyectointegrador.data.model.ProductObjectItem
 import com.canitopai.proyectointegrador.network.ProductEndpoints
 import retrofit2.Call
 import retrofit2.Callback

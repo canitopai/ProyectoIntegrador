@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.canitopai.proyectointegrador.databinding.FragmentProductAddBinding
-import com.canitopai.proyectointegrador.model.ProductObjectItem
+import com.canitopai.proyectointegrador.data.model.ProductObjectItem
 import com.canitopai.proyectointegrador.network.NetworkManager
 import com.canitopai.proyectointegrador.network.ProductEndpoints
 import kotlinx.android.synthetic.main.fragment_product_add.*
@@ -17,7 +17,6 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.*
 
 
 class ProductAddFragment : Fragment() {

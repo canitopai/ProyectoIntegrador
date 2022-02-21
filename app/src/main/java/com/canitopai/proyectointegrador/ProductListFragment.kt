@@ -10,11 +10,8 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.canitopai.proyectointegrador.databinding.FragmentProductListBinding
-import com.canitopai.proyectointegrador.model.ProductObject
-import com.canitopai.proyectointegrador.model.ProductObjectItem
-import com.canitopai.proyectointegrador.model.ProductObjectRequest
+import com.canitopai.proyectointegrador.data.model.ProductObjectItem
 import com.canitopai.proyectointegrador.network.NetworkManager
-import com.canitopai.proyectointegrador.network.ProductEndpoints
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

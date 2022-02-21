@@ -1,6 +1,5 @@
 package com.canitopai.proyectointegrador.network
-import android.text.Editable
-import com.canitopai.proyectointegrador.model.ProductObjectItem
+import com.canitopai.proyectointegrador.data.model.ProductObjectItem
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET

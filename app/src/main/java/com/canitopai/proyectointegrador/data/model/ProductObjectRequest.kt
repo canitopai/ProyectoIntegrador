@@ -1,6 +1,4 @@
-package com.canitopai.proyectointegrador.model
-
-import com.google.gson.annotations.SerializedName
+package com.canitopai.proyectointegrador.data.model
 
 data class ProductObjectRequest(
     val id: Int,
