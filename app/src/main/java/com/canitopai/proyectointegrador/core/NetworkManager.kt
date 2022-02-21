@@ -1,5 +1,6 @@
-package com.canitopai.proyectointegrador.network
+package com.canitopai.proyectointegrador.core
 
+import com.canitopai.proyectointegrador.data.network.ProductEndpoints
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

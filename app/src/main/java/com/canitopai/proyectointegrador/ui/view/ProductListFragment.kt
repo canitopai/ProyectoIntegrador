@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.canitopai.proyectointegrador.data.model.ProductObjectItem
 import com.canitopai.proyectointegrador.databinding.FragmentProductListBinding
-import com.canitopai.proyectointegrador.network.NetworkManager
+import com.canitopai.proyectointegrador.core.NetworkManager
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

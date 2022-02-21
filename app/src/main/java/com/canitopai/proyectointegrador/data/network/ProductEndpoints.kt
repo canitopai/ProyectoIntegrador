@@ -1,4 +1,4 @@
-package com.canitopai.proyectointegrador.network
+package com.canitopai.proyectointegrador.data.network
 import com.canitopai.proyectointegrador.data.model.ProductObjectItem
 import retrofit2.Call
 import retrofit2.http.Body
