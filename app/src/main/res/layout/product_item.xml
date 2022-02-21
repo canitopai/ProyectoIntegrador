@@ -3,34 +3,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:backgroundTint="#9C27B0">
 
     <androidx.cardview.widget.CardView
         android:layout_width="409dp"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="#00CFCCCC"
+        android:backgroundTint="#E4E2E2"
+        android:clipToPadding="true"
+        app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="30dp"
-        app:cardElevation="3dp"
-        app:cardMaxElevation="12dp"
+        app:cardElevation="5dp"
+        app:cardMaxElevation="5dp"
+        app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_width="373dp"
+            android:layout_height="124dp">
+
+            <TextView
+                android:id="@+id/tvCat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/shojumaru"
+                android:text="Cat"
+                android:textColor="#E91E63"
+                android:textSize="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvItemName" />
 
             <TextView
                 android:id="@+id/tvItemName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="72dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="20dp"
                 android:fontFamily="@font/shojumaru"
                 android:text="Nombre Producto"
                 android:textColor="#E91E63"
-                android:textSize="26sp"
+                android:textSize="22sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.088"
                 app:layout_constraintStart_toStartOf="parent"
@@ -40,16 +57,26 @@
                 android:id="@+id/tvItemPrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="250dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginStart="200dp"
                 android:layout_marginBottom="30dp"
                 android:fontFamily="@font/shojumaru"
                 android:text="Precio"
                 android:textColor="#E91E63"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tvItemName"
-                app:layout_constraintTop_toBottomOf="@+id/tvItemName" />
+                app:layout_constraintStart_toStartOf="@+id/tvItemName" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="37dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/shojumaru"
+                android:text="€"
+                android:textColor="#E91E63"
+                android:textSize="26dp"
+                app:layout_constraintStart_toEndOf="@+id/tvItemPrice"
+                app:layout_constraintTop_toTopOf="@+id/tvItemPrice" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

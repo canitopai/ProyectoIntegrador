@@ -10,8 +10,10 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.canitopai.proyectointegrador.databinding.FragmentProductListBinding
+import com.canitopai.proyectointegrador.model.ProductObject
 import com.canitopai.proyectointegrador.model.ProductObjectItem
 import com.canitopai.proyectointegrador.model.ProductObjectRequest
+import com.canitopai.proyectointegrador.network.NetworkManager
 import com.canitopai.proyectointegrador.network.ProductEndpoints
 import retrofit2.Call
 import retrofit2.Callback
@@ -25,9 +27,8 @@ class ProductListFragment : Fragment() {
 
 
     private var _binding: FragmentProductListBinding? = null
-
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://192.168.56.1:3000/api/todoitems/")
+        .baseUrl("http://10.0.2.2:5000/api/todoitems/")
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
@@ -43,7 +44,8 @@ class ProductListFragment : Fragment() {
             it.name,
             it.category,
             it.description,
-            it.price
+            it.price,
+            it.id
         )
         findNavController().navigate(action)
         //val action = PokemonListFragmentDirections.actionPokemonListToPokemonDetailFragment(it.name,it.types.type.name[0],it.height,it.weight,it.id
@@ -58,9 +60,7 @@ class ProductListFragment : Fragment() {
     ): View? {
         _binding = FragmentProductListBinding.inflate(inflater, container, false)
         return binding.root
-        binding.btnAdd.setOnClickListener{
-            //ir al AddProduct
-        }
+
     }
 
 
@@ -68,40 +68,12 @@ class ProductListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        binding.rvProduct.layoutManager = GridLayoutManager(context, 2)
+        binding.rvProduct.layoutManager = GridLayoutManager(context, 1)
         binding.rvProduct.adapter = adapter
-        binding.btnAdd.setOnClickListener {
-            Toast.makeText(it.context, "hjoa", Toast.LENGTH_SHORT).show()
-
-            val service: ProductEndpoints = retrofit.create(ProductEndpoints::class.java)
-
-            service.savePost(ProductObjectRequest(0, "name","desc", 1, "cats")).enqueue(
-                object : Callback<ProductObjectItem> {
-
-
-                    override fun onFailure(call: Call<ProductObjectItem>, t: Throwable) {
-                        Toast.makeText(
-                            context,
-                            "Algo no ha funcionado como esperábamos",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        Log.e("Retrofit", "Error: ${t.localizedMessage}", t)
-                    }
-
-                    override fun onResponse(
-                        call: Call<ProductObjectItem>,
-                        response: Response<ProductObjectItem>
-                    ) {
-                        if (response.isSuccessful) {
-                            adapter.submitList(listOf(response.body()))
-                            Log.e("Retrofit", "Salió bien")
-                        } else {
-                            Toast.makeText(context, "400", Toast.LENGTH_SHORT).show()
-                        }
-                    }
-
-                }
+        binding.btnAdd.setOnClickListener{
+            val action = ProductListFragmentDirections.actionProductListFragmentToProductAddFragment(
             )
+            findNavController().navigate(action)
         }
         requestData()
     }
@@ -109,9 +81,7 @@ class ProductListFragment : Fragment() {
 
     private fun requestData() {
 
-        val service: ProductEndpoints = retrofit.create(ProductEndpoints::class.java)
-
-        service.getProducts().enqueue(object : Callback<List<ProductObjectItem>> {
+        NetworkManager.service.getProducts().enqueue(object : Callback<List<ProductObjectItem>> {
 
 
             override fun onFailure(call: Call<List<ProductObjectItem>>, t: Throwable) {

@@ -7,5 +7,5 @@ import com.google.gson.annotations.SerializedName
 data class ProductObject(
     @SerializedName("results")
     @Expose
-    val results: MutableList<ProductObjectItem>
+    val results: List<ProductObjectItem>
 )

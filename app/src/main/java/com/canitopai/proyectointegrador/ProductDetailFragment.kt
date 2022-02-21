@@ -26,6 +26,7 @@ class ProductDetailFragment : Fragment() {
     private var desc: String? = null
     private var category: String? = null
     private var price: Int = 0
+    private var myId: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,13 +64,13 @@ class ProductDetailFragment : Fragment() {
     }
 
     private fun requestData() {
-        val retrofit = Retrofit.Builder().baseUrl("https://pokeapi.co/api/v2/pokemon/")
+        val retrofit = Retrofit.Builder().baseUrl("http://192.168.56.1:3000/api/todoitems/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
         val service: ProductEndpoints = retrofit.create(ProductEndpoints::class.java)
 
-        service.getProductDetailed(id)?.enqueue(object : Callback<ProductObjectItem?> {
+        service.getProductDetailed(myId)?.enqueue(object : Callback<ProductObjectItem?> {
 
 
             override fun onFailure(call: Call<ProductObjectItem?>, t: Throwable) {

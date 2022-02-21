@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_productListFragment_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
+        <action
+            android:id="@+id/action_productListFragment_to_productAddFragment"
+            app:destination="@id/productAddFragment" />
     </fragment>
     <fragment
         android:id="@+id/productDetailFragment"
@@ -32,5 +35,13 @@
         <argument
             android:name="price"
             app:argType="integer" />
+        <argument
+            android:name="myId"
+            app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/productAddFragment"
+        android:name="com.canitopai.proyectointegrador.ProductAddFragment"
+        android:label="fragment_product_add"
+        tools:layout="@layout/fragment_product_add" />
 </navigation>

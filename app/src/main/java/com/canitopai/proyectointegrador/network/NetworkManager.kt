@@ -15,7 +15,7 @@ object NetworkManager {
         .build()
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("https://api.github.com/")
+        .baseUrl("http://10.0.2.2:5000/api/todoitems/")
         .client(client)
         .addConverterFactory(GsonConverterFactory.create())
         .build()

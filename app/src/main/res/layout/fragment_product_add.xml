@@ -88,8 +88,8 @@
     <EditText
         android:id="@+id/etDesc"
         android:layout_width="154dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="24dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="28dp"
         android:ems="10"
         android:hint="Descripcion"
         android:inputType="textPersonName"
