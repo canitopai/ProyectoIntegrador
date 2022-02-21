@@ -34,6 +34,9 @@ class ProductAddFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.btnAgregar.setOnClickListener{
+            postProduct()
+        }
 
 
 
@@ -41,14 +44,9 @@ class ProductAddFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-            val retrofit = Retrofit.Builder().baseUrl("http://localhost:44319/api/todoitems/")
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
-            val service: ProductEndpoints = retrofit.create(ProductEndpoints::class.java)
 
-            binding.btnAgregar.setOnClickListener{
-                postProduct()
-            }
+
+
 
     }
     private fun postProduct() {
@@ -59,7 +57,7 @@ class ProductAddFragment : Fragment() {
                     //getMsg()
                     Log.e("Network", "post hecho con éxito")
                 } else {
-                    Log.e("Network", "error en la conexion")
+                    Log.e("Network", "error en la conexion on Response")
                 }
             }
             override fun onFailure(call: Call<ProductObjectItem>, t: Throwable) {
