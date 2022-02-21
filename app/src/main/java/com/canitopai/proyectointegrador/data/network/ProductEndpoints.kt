@@ -19,6 +19,6 @@ interface ProductEndpoints {
     fun savePost(@Body post: ProductObjectItem): Call<ProductObjectItem>
 
     @DELETE("/api/todoitems/{id}")
-    fun deletePost(@Path("id")id: Int): Response<ProductObjectItem>
+    fun deletePost(@Path("id")id: Int): Call<Response<ProductObjectItem>>
 
 }

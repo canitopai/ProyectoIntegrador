@@ -57,17 +57,14 @@ class ProductDetailFragment : Fragment() {
 
         binding.btnDelete.setOnClickListener {
             //ir a list y pasar por parametro el id que va a borrar
-            val action = ProductAddFragmentDirections.actionProductAddFragmentToProductListFragment(
-                it.id
-            )
-            findNavController().navigate(action)
             NetworkManager.service.deletePost(args.myId)
+            val action = ProductDetailFragmentDirections.actionProductDetailFragmentToProductListFragment()
+            findNavController().navigate(action)
         }
 
         binding.btnModify.setOnClickListener {
             //ir a modify
-            val action = ProductAddFragmentDirections.actionProductAddFragmentToProductListFragment(
-                it.id
+            val action = ProductDetailFragmentDirections.actionProductDetailFragmentToProductModifyFragment(
             )
             findNavController().navigate(action)
         }

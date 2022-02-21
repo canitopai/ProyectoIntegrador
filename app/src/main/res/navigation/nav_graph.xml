@@ -45,6 +45,9 @@
             android:id="@+id/action_productDetailFragment_to_productModifyFragment"
             app:destination="@id/productModifyFragment" />
     </fragment>
+    <action
+        android:id="@+id/action_productDetailFragment_to_productListFragment"
+        app:destination="@id/productListFragment" />
     <fragment
         android:id="@+id/productAddFragment"
         android:name="com.canitopai.proyectointegrador.ui.view.ProductAddFragment"
@@ -60,7 +63,7 @@
         android:label="fragment_product_modify"
         tools:layout="@layout/fragment_product_modify" >
         <action
-            android:id="@+id/action_productModifyFragment_to_productListFragment"
-            app:destination="@id/productListFragment" />
+            android:id="@+id/action_productModifyFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
     </fragment>
 </navigation>
