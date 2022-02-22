@@ -8,8 +8,8 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#E4E2E2"
+        android:layout_height="153dp"
+        android:backgroundTint="#FFFFBF"
         android:clipToPadding="true"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="30dp"

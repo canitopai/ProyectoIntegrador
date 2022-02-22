@@ -62,5 +62,7 @@
         <action
             android:id="@+id/action_productModifyFragment_to_productListFragment"
             app:destination="@id/productListFragment" />
+        <argument android:name="myId"
+            app:argType="integer" />
     </fragment>
 </navigation>

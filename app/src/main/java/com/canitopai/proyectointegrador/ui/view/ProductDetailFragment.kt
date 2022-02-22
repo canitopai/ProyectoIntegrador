@@ -57,14 +57,26 @@ class ProductDetailFragment : Fragment() {
 
         binding.btnDelete.setOnClickListener {
             //ir a list y pasar por parametro el id que va a borrar
-            NetworkManager.service.deletePost(args.myId)
-            val action = ProductDetailFragmentDirections.actionProductDetailFragmentToProductListFragment()
-            findNavController().navigate(action)
+            NetworkManager.service.deletePost(args.myId).enqueue(object :
+                Callback<Void>{
+                override fun onResponse(call: Call<Void>, response: Response<Void>) {
+                    if (response.isSuccessful) {
+                        Toast.makeText(context, "Pasa por el put", Toast.LENGTH_SHORT).show()
+                        Log.e("Network", "put hecho con éxito")
+                    } else {
+                        Log.e("Network", "error en la conexion on Response")
+                    }
+                }
+                override fun onFailure(call: Call<Void>, t: Throwable) {
+                    Log.e("Network", "error en la conexion",t)
+                    Toast.makeText(context, "error de conexion", Toast.LENGTH_SHORT).show()
+                }
+            })
         }
 
         binding.btnModify.setOnClickListener {
             //ir a modify
-            val action = ProductDetailFragmentDirections.actionProductDetailFragmentToProductModifyFragment(
+            val action = ProductDetailFragmentDirections.actionProductDetailFragmentToProductModifyFragment(args.myId
             )
             findNavController().navigate(action)
         }

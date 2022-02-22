@@ -104,6 +104,7 @@
     <EditText
         android:id="@+id/etModPrice"
         android:layout_width="119dp"
+        android:inputType="number"
         android:layout_height="48dp"
         android:layout_marginStart="20dp"
         android:fontFamily="@font/balthazar"

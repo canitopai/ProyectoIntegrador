@@ -3,11 +3,7 @@ import com.canitopai.proyectointegrador.data.model.ProductObjectItem
 import com.canitopai.proyectointegrador.data.model.ProductObjectRequest
 import retrofit2.Call
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
-import retrofit2.http.DELETE
-import retrofit2.http.Path
+import retrofit2.http.*
 
 interface ProductEndpoints {
     @GET("/api/todoitems/")
@@ -19,7 +15,10 @@ interface ProductEndpoints {
     @POST("/api/todoitems/")
     fun savePost(@Body post: ProductObjectRequest): Call<ProductObjectRequest>
 
-    @DELETE("{id}")
+    @PUT("{id}")
+    fun savePut(@Path("id")id: Int,@Body post: ProductObjectItem): Call<ProductObjectItem>
+
+    @DELETE("/api/todoitems/{id}")
     fun deletePost(@Path("id")id: Int): Call<Void>
 
 }
