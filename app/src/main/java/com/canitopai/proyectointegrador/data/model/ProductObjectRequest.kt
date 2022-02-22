@@ -1,9 +1,14 @@
 package com.canitopai.proyectointegrador.data.model
 
+import com.google.gson.annotations.SerializedName
+
 data class ProductObjectRequest(
-    val id: Int,
-    val title: String,
+    @SerializedName("category")
+    val category: String,
+    @SerializedName("description")
     val description: String,
-    val price: Int,
-    val category: String
+    @SerializedName("name")
+    val name: String,
+    @SerializedName("price")
+    val price: Int
 )

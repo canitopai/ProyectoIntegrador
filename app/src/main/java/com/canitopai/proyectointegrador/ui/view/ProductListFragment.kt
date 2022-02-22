@@ -24,11 +24,6 @@ class ProductListFragment : Fragment() {
 
 
     private var _binding: FragmentProductListBinding? = null
-    private val retrofit = Retrofit.Builder()
-        .baseUrl("http://10.0.2.2:5000/api/todoitems/")
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
-
     private val binding
         get() = _binding!!
     private val adapter = ProductAdapter {

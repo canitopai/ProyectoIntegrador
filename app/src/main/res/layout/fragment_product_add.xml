@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/shojumaru"
         android:text="Descripción:"
         android:textColor="#E91E63"
@@ -39,7 +39,7 @@
         android:id="@+id/lblCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="@font/shojumaru"
         android:text="Categoría:"
         android:textColor="#E91E63"
@@ -65,12 +65,13 @@
         android:id="@+id/btnAgregar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="112dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="60dp"
         android:backgroundTint="#E91E63"
         android:text="Agregar"
+        app:cornerRadius="20dp"
         app:iconTint="#E91E63"
-        app:layout_constraintStart_toStartOf="@+id/lblPrice"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lblPrice" />
 
     <EditText
@@ -87,13 +88,14 @@
 
     <EditText
         android:id="@+id/etDesc"
-        android:layout_width="154dp"
+        android:layout_width="335dp"
         android:layout_height="48dp"
-        android:layout_marginStart="28dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
         android:hint="Descripcion"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toEndOf="@+id/lblDesc"
+        app:layout_constraintStart_toStartOf="@+id/lblDesc"
         app:layout_constraintTop_toTopOf="@+id/lblDesc" />
 
     <EditText
@@ -117,4 +119,16 @@
         android:inputType="textPersonName"
         app:layout_constraintStart_toEndOf="@+id/lblPrice"
         app:layout_constraintTop_toTopOf="@+id/lblPrice" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="129dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#E91E63"
+        android:text="Volver"
+        app:cornerRadius="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAgregar" />
 </androidx.constraintlayout.widget.ConstraintLayout>

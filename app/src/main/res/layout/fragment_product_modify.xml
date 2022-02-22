@@ -10,25 +10,27 @@
 
     <TextView
         android:id="@+id/lblName"
-        android:layout_width="197dp"
+        android:layout_width="169dp"
         android:layout_height="69dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="84dp"
         android:fontFamily="@font/shojumaru"
         android:text="Nombre producto:"
+        android:textColor="#D81B60"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvName"
+    <EditText
+        android:id="@+id/etModName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="40dp"
+        android:layout_marginStart="20dp"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/balthazar"
-        android:text="Nombre"
+        android:hint="Nombre Producto"
+        android:minHeight="48dp"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@+id/lblName"
         app:layout_constraintTop_toTopOf="@+id/lblName" />
@@ -38,21 +40,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="50dp"
         android:fontFamily="@font/shojumaru"
         android:text="Descripción:"
+        android:textColor="#D81B60"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/lblName"
         app:layout_constraintTop_toBottomOf="@+id/lblName" />
 
-    <TextView
-        android:id="@+id/tvDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+    <EditText
+        android:id="@+id/etModDesc"
+        android:layout_width="336dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="30dp"
         android:fontFamily="@font/balthazar"
-        android:text="Descripción"
+        android:hint="Descripción"
+        android:minHeight="48dp"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="@+id/lblDesc"
         app:layout_constraintTop_toTopOf="@+id/lblDesc" />
@@ -65,21 +69,23 @@
         android:layout_marginEnd="156dp"
         android:fontFamily="@font/shojumaru"
         android:text="Categoría:"
+        android:textColor="#D81B60"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/tvName"
         app:layout_constraintStart_toStartOf="@+id/lblDesc"
         app:layout_constraintTop_toBottomOf="@+id/lblDesc" />
 
-    <TextView
-        android:id="@+id/tvCategory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
+    <EditText
+        android:id="@+id/etModCat"
+        android:layout_width="179dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="35dp"
         android:fontFamily="@font/balthazar"
-        android:text="Categoría"
+        android:hint="Categoría"
+        android:minHeight="48dp"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/tvName"
+        app:layout_constraintStart_toEndOf="@+id/lblCategory"
         app:layout_constraintTop_toTopOf="@+id/lblCategory" />
 
     <TextView
@@ -89,20 +95,22 @@
         android:layout_marginTop="50dp"
         android:fontFamily="@font/shojumaru"
         android:text="Precio:"
+        android:textColor="#D81B60"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/lblCategory"
         app:layout_constraintTop_toBottomOf="@+id/lblCategory" />
 
-    <TextView
-        android:id="@+id/tvPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="70dp"
+    <EditText
+        android:id="@+id/etModPrice"
+        android:layout_width="119dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="20dp"
         android:fontFamily="@font/balthazar"
-        android:text="Precio"
+        android:hint="Precio"
+        android:minHeight="48dp"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="@+id/tvCategory"
+        app:layout_constraintStart_toEndOf="@+id/lblPrice"
         app:layout_constraintTop_toTopOf="@+id/lblPrice" />
 
     <TextView
@@ -121,30 +129,24 @@
         android:id="@+id/btnGuardar"
         android:layout_width="143dp"
         android:layout_height="60dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="120dp"
         android:backgroundTint="#E91E63"
         android:text="Guardar"
         app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btnCancelar"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblPrice"
-        app:layout_constraintVertical_bias="0.058" />
+        app:layout_constraintStart_toStartOf="@+id/lblPrice"
+        app:layout_constraintTop_toBottomOf="@+id/lblPrice" />
 
     <Button
         android:id="@+id/btnCancelar"
         android:layout_width="143dp"
         android:layout_height="60dp"
-        android:layout_marginTop="136dp"
-        android:layout_marginEnd="64dp"
+        android:layout_marginStart="20dp"
         android:backgroundTint="#E91E63"
         android:text="Cancelar"
         app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPrice"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintStart_toEndOf="@+id/btnGuardar"
+        app:layout_constraintTop_toTopOf="@+id/btnGuardar" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

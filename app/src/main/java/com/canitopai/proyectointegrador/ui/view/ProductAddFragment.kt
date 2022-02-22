@@ -7,9 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.canitopai.proyectointegrador.data.model.ProductObjectItem
 import com.canitopai.proyectointegrador.databinding.FragmentProductAddBinding
 import com.canitopai.proyectointegrador.core.NetworkManager
+import com.canitopai.proyectointegrador.data.model.ProductObjectRequest
 import kotlinx.android.synthetic.main.fragment_product_add.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -35,6 +37,10 @@ class ProductAddFragment : Fragment() {
         binding.btnAgregar.setOnClickListener{
             postProduct()
         }
+        binding.btnBack.setOnClickListener {
+            val action = ProductAddFragmentDirections.actionProductAddFragmentToProductListFragment()
+            findNavController().navigate(action)
+        }
 
 
 
@@ -48,17 +54,18 @@ class ProductAddFragment : Fragment() {
 
     }
     private fun postProduct() {
-        NetworkManager.service.savePost(ProductObjectItem(etCat.text.toString(),etDesc.text.toString(),0,etName.text.toString(),3)).enqueue(object :
-            Callback<ProductObjectItem> {
-            override fun onResponse(call: Call<ProductObjectItem>, response: Response<ProductObjectItem>) {
+        NetworkManager.service.savePost(ProductObjectRequest(etCat.text.toString(),etDesc.text.toString(),etName.text.toString(),3)).enqueue(object :
+            Callback<ProductObjectRequest> {
+            override fun onResponse(call: Call<ProductObjectRequest>, response: Response<ProductObjectRequest>) {
                 if (response.isSuccessful) {
-                    //getMsg()
+                    //getMs
+                    Toast.makeText(context, "Pasa por el post", Toast.LENGTH_SHORT).show()
                     Log.e("Network", "post hecho con éxito")
                 } else {
                     Log.e("Network", "error en la conexion on Response")
                 }
             }
-            override fun onFailure(call: Call<ProductObjectItem>, t: Throwable) {
+            override fun onFailure(call: Call<ProductObjectRequest>, t: Throwable) {
                 Log.e("Network", "error en la conexion",t)
                 Toast.makeText(context, "error de conexion", Toast.LENGTH_SHORT).show()
             }
